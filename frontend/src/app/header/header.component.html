@@ -1,0 +1,39 @@
+<header>
+  <div class="header-container">
+    <div class="brand-container">
+      <img src="macrova-icon.svg" alt="" />
+      <span class="brand">Macrova</span>
+    </div>
+    @if (isLogin) {
+      <div>
+        <button class="login-btn" [routerLink]="'/signup'">Sign Up</button>
+      </div>
+    } @else if (isSignup) {
+      <div>
+        <button class="login-btn" [routerLink]="'/login'">Log In</button>
+      </div>
+    } @else {
+      <nav>
+        @for (endpoint of endpoints; track $index) {
+          <button
+            [routerLink]="'/' + endpoint"
+            [class.active]="isActive(endpoint)"
+          >
+            {{ endpoint }}
+          </button>
+        }
+        <div style="position: relative">
+          <button class="profile-icon" (click)="expandProfile()">
+            {{ initial() }}
+          </button>
+          @if (isProfileExpanded) {
+            <div class="profile-container">
+              <button>Edit profile</button>
+              <button class="sign-out" (click)="signOut()">Sign Out</button>
+            </div>
+          }
+        </div>
+      </nav>
+    }
+  </div>
+</header>

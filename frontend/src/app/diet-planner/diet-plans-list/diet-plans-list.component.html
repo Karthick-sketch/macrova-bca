@@ -1,0 +1,51 @@
+<div class="list-container">
+  <div class="page-header">
+    <h2>Diet Plans History</h2>
+    <p class="sub-text">View your past diet plans and track your progress.</p>
+  </div>
+
+  <div class="plans-list">
+    @for (dietPlan of dietPlans; track dietPlan.id) {
+      <div class="diet-plan-item">
+        <div class="plan-info">
+          <div class="plan-title">
+            {{ dietPlan.title }}
+            <span [class]="dietPlan.active ? 'status-badge active' : 'status-badge inactive'">
+              {{ dietPlan.active ? 'Active' : 'Inactive' }}
+            </span>
+          </div>
+          <ng-container
+            *ngTemplateOutlet="
+              planDetails;
+              context: {
+                plan: dietPlan.plan,
+                weight: dietPlan.weight,
+                targetWeight: dietPlan.targetWeight,
+                duration: dietPlan.duration,
+                status: dietPlan.active ? 'Active' : 'Inactive',
+              }
+            "
+          ></ng-container>
+        </div>
+        <button class="nav-btn" [routerLink]="'/history/' + dietPlan.id">
+          <img src="right.svg" alt="View Plan" />
+        </button>
+      </div>
+    } @empty {
+      <div class="empty-state">No diet plans found.</div>
+    }
+  </div>
+</div>
+
+<ng-template
+  #planDetails
+  let-plan="plan"
+  let-weight="weight"
+  let-targetWeight="targetWeight"
+  let-duration="duration"
+  let-status="status"
+>
+  <p class="plan-meta">
+    {{ getPlan(plan) }} &nbsp;·&nbsp; {{ weight }}kg → {{ targetWeight }}kg &nbsp;·&nbsp; {{ duration }} days
+  </p>
+</ng-template>

@@ -1,0 +1,144 @@
+/* ── Header ────────────────────────────────────────── */
+header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand-container {
+  display: flex;
+  align-items: normal;
+  gap: var(--space-sm);
+}
+
+.brand-container img {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.brand {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+/* ── Nav links ─────────────────────────────────────── */
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+nav > button {
+  padding: 0.4rem 0.85rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  text-transform: capitalize;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
+}
+
+nav > button:hover {
+  color: var(--color-text);
+  background-color: var(--color-primary-light);
+}
+
+nav > button.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+/* ── Auth button (login / signup shown on auth pages) ── */
+.login-btn {
+  padding: 0.45rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-mid);
+  border-radius: var(--radius-md);
+  transition: background-color 0.15s;
+}
+
+.login-btn:hover {
+  background-color: var(--color-primary-mid);
+}
+
+/* ── Profile icon & dropdown ───────────────────────── */
+.profile-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--space-sm);
+  transition: background-color 0.15s;
+}
+
+.profile-icon:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.profile-container {
+  position: absolute;
+  top: 3.75rem;
+  right: var(--space-xl);
+  min-width: 10rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.profile-container button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: left;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.15s;
+}
+
+.profile-container button:last-child {
+  border-bottom: none;
+}
+
+.profile-container button:hover {
+  background-color: var(--color-input-bg);
+}
+
+.sign-out {
+  color: var(--color-danger) !important;
+}

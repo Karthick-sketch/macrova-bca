@@ -1,0 +1,20 @@
+<app-toast></app-toast>
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1>Create account</h1>
+    <p class="auth-subtitle">Start tracking your nutrition today</p>
+    <div class="field-group">
+      <input type="text" placeholder="Username" [(ngModel)]="user.username" />
+    </div>
+    <div class="field-group">
+      <input type="email" placeholder="Email" [(ngModel)]="user.email" />
+    </div>
+    <div class="field-group">
+      <input type="password" placeholder="Password" [(ngModel)]="user.password" />
+    </div>
+    <button type="submit" class="submit-btn" (click)="submit()">Sign Up</button>
+    <div class="auth-link">
+      Already have an account? <a routerLink="/login">Log in here</a>
+    </div>
+  </div>
+</div>

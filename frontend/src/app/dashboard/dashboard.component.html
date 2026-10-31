@@ -1,0 +1,64 @@
+@if (metrics) {
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h2>{{ metrics.title }}</h2>
+    </div>
+
+    <!-- Daily Goal Progress -->
+    <div class="progress-section">
+      <div class="progress-label">
+        <span>Daily Goal</span>
+        <span class="progress-pct">{{ metrics.taken | limitreach: false }}%</span>
+      </div>
+      <div class="outer-bar">
+        <div
+          class="inner-bar-normal"
+          [style.width.%]="metrics.taken | limitreach: true"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Metrics Row 1: Streak, Weight, Calories -->
+    <div class="metrics-row">
+      <div class="metric-card accent">
+        <p class="metric-label">Streak</p>
+        <p class="metric-value">{{ metrics.currentDay }} / {{ metrics.duration }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> days</small></p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-label">Current Weight</p>
+        <p class="metric-value">{{ metrics.currentWeight }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> kg</small></p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-label">Daily Calorie Intake</p>
+        <p class="metric-value">{{ metrics.intake }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> kcal</small></p>
+      </div>
+    </div>
+
+    <!-- Metrics Row 2: Macros -->
+    <div class="metrics-row">
+      <div class="metric-card">
+        <p class="metric-label">Protein</p>
+        <p class="metric-value">{{ metrics.protein }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> g</small></p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-label">Carbohydrates</p>
+        <p class="metric-value">{{ metrics.carbs }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> g</small></p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-label">Fat</p>
+        <p class="metric-value">{{ metrics.fat }}<small style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);"> g</small></p>
+      </div>
+    </div>
+
+    <!-- Weight Track -->
+    <div class="weight-section">
+      <h3>Weight Trend</h3>
+      <div class="weight-track-container">
+        <app-weight-track
+          [days]="metrics.days"
+          [weights]="metrics.weights"
+        ></app-weight-track>
+      </div>
+    </div>
+  </div>
+}
