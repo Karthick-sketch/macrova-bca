@@ -1,0 +1,6 @@
+# Local build environment; recreate with `python3 -m venv .venv` and requirements.txt
+.venv/
+__pycache__/
+*.pyc
+# intermediate two-pass render
+*-pass.pdf
